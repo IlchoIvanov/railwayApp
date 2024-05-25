@@ -1,6 +1,7 @@
 package com.example.railwayapp.Model.Entity;
 
 import com.example.railwayapp.Model.Entity.Enum.Level;
+import com.example.railwayapp.Model.Entity.Enum.UserRole;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -18,6 +19,9 @@ public class User  extends BaseEntity{
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Level level;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
     @OneToMany(mappedBy = "author")
     private Set<Picture> userPictures;
     @OneToMany(mappedBy = "author")
@@ -27,6 +31,7 @@ public class User  extends BaseEntity{
         this.level = Level.НОВ;
         this.userPictures = new HashSet<>();
         this.userComments = new HashSet<>();
+        this.role = UserRole.USER;
     }
 
     public String getUsername() {
@@ -75,5 +80,13 @@ public class User  extends BaseEntity{
 
     public void setUserComments(Set<Comment> userComments) {
         this.userComments = userComments;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 }

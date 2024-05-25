@@ -68,4 +68,12 @@ public class Picture extends BaseEntity {
     public void setComments(Set<Comment> comments) {
         this.comments = comments;
     }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
 }
