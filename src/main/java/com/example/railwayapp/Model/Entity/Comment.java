@@ -54,4 +54,5 @@ public class Comment extends BaseEntity{
     public void setPicture(Picture picture) {
         this.picture = picture;
     }
+
 }

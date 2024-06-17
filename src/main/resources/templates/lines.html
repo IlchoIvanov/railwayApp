@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head}">
+</head>
+<body class="bg-info" >
+<div th:replace="~{fragments/navbar}"></div>
+<p></p>
+<div class="container-fluid w-75 h-50">
+<div th:each="line: ${allRailwayLines}" class="card">
+    <img class="card-img-top" th:src="@{${line.getRandomPicturePath()}}" alt="снимка от жп линията">
+    <div class="card-body">
+        <h5 class="card-title">Жп линия <span th:text="${line.getNumber()}"></span></h5>
+
+    </div>
+</div>
+</div>
+<footer th:replace="~{fragments/footer}"></footer>
+</body>
+</html>

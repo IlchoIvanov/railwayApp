@@ -1,9 +1,6 @@
 package com.example.railwayapp.Model.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,9 +18,12 @@ public class RailwayLine extends BaseEntity {
     private String description;
     @ManyToMany
     private Set<Station> stations;
+    @OneToMany(mappedBy = "railwayLine")
+    private Set<Picture> pictures;
 
     public RailwayLine() {
         this.stations = new HashSet<>();
+        this.pictures = new HashSet<>();
     }
 
     public int getNumber() {
@@ -64,5 +64,13 @@ public class RailwayLine extends BaseEntity {
 
     public void setStations(Set<Station> stations) {
         this.stations = stations;
+    }
+
+    public Set<Picture> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(Set<Picture> pictures) {
+        this.pictures = pictures;
     }
 }

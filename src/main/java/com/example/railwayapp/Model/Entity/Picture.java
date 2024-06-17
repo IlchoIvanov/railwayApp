@@ -23,6 +23,8 @@ public class Picture extends BaseEntity {
     private User author;
     @OneToMany(mappedBy = "picture")
     private Set<Comment> comments;
+    @ManyToOne
+    private RailwayLine railwayLine;
 
     public Picture() {
         this.comments = new HashSet<>();
@@ -75,5 +77,13 @@ public class Picture extends BaseEntity {
 
     public void setLikes(int likes) {
         this.likes = likes;
+    }
+
+    public RailwayLine getRailwayLine() {
+        return railwayLine;
+    }
+
+    public void setRailwayLine(RailwayLine railwayLine) {
+        this.railwayLine = railwayLine;
     }
 }

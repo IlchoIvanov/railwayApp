@@ -16,11 +16,7 @@ public class Station extends BaseEntity {
     private StationType stationType;
     @Column(nullable = false, name = "tickets_sale")
     private boolean ticketsSale;
-    @Column(nullable = false)
-    private String platformType;
     private String description;
-    @Column(name = "length_to_center")
-    private Double lengthToCenter;
     @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
     private Set<Picture> pictures;
 
@@ -58,13 +54,6 @@ public class Station extends BaseEntity {
         this.ticketsSale = ticketsSale;
     }
 
-    public String getPlatformType() {
-        return platformType;
-    }
-
-    public void setPlatformType(String platformType) {
-        this.platformType = platformType;
-    }
 
     public String getDescription() {
         return description;
@@ -74,13 +63,7 @@ public class Station extends BaseEntity {
         this.description = description;
     }
 
-    public Double getLengthToCenter() {
-        return lengthToCenter;
-    }
 
-    public void setLengthToCenter(Double lengthToCenter) {
-        this.lengthToCenter = lengthToCenter;
-    }
 
     public Set<Picture> getPictures() {
         return pictures;
