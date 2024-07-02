@@ -4,8 +4,7 @@ import com.example.railwayapp.Model.Entity.Picture;
 import com.example.railwayapp.Repository.PictureRepository;
 import com.example.railwayapp.Sevice.PictureService;
 import org.springframework.stereotype.Service;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
+
 
 @Service
 public class PictureServiceImpl implements PictureService {
@@ -17,11 +16,10 @@ public class PictureServiceImpl implements PictureService {
 
     @Override
     public String findRandomPicturePath(int railwayNumber) {
-        List<Picture> picturesByLine = pictureRepository.findAllByRailwayLine_Number(railwayNumber);
-        if (picturesByLine == null || picturesByLine.isEmpty()) {
+        Picture firstByRailwayLineNumber = pictureRepository.findFirstByRailwayLine_Number(railwayNumber);
+        if (firstByRailwayLineNumber == null) {
             return "";
         }
-        int randomIndex = ThreadLocalRandom.current().nextInt(picturesByLine.size() + 1);
-        return picturesByLine.get(randomIndex).getPath();
+        return firstByRailwayLineNumber.getPath();
     }
 }

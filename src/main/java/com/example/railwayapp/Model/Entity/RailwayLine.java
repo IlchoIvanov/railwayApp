@@ -1,6 +1,7 @@
 package com.example.railwayapp.Model.Entity;
 
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,8 +15,9 @@ public class RailwayLine extends BaseEntity {
     private String route;
     @Column(nullable = false)
     private Double length;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
+
     @ManyToMany
     private Set<Station> stations;
     @OneToMany(mappedBy = "railwayLine")
@@ -73,4 +75,6 @@ public class RailwayLine extends BaseEntity {
     public void setPictures(Set<Picture> pictures) {
         this.pictures = pictures;
     }
+
+
 }

@@ -4,7 +4,9 @@ import com.example.railwayapp.Model.Entity.Enum.Level;
 import com.example.railwayapp.Model.Entity.Enum.UserRole;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,14 +25,46 @@ public class User  extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private UserRole role;
     @OneToMany(mappedBy = "author")
-    private Set<Picture> userPictures;
+    private List<Picture> userPictures;
     @OneToMany(mappedBy = "author")
-    private Set<Comment> userComments;
+    private List<Comment> userComments;
+    @ManyToMany
+    private List<Station> visitedStations;
+
+    public void setLevel(Level level) {
+        this.level = level;
+    }
+
+    public List<Picture> getUserPictures() {
+        return userPictures;
+    }
+
+    public void setUserPictures(List<Picture> userPictures) {
+        this.userPictures = userPictures;
+    }
+
+    public List<Comment> getUserComments() {
+        return userComments;
+    }
+
+    public void setUserComments(List<Comment> userComments) {
+        this.userComments = userComments;
+    }
+
+    public List<Station> getVisitedStations() {
+        return visitedStations;
+    }
+
+    public void setVisitedStations(List<Station> visitedStations) {
+        this.visitedStations = visitedStations;
+    }
+
 
     public User() {
+        this.visitedStations = new ArrayList<>();
         this.level = Level.НОВ;
-        this.userPictures = new HashSet<>();
-        this.userComments = new HashSet<>();
+        this.userPictures = new ArrayList<>();
+        this.userComments = new ArrayList<>();
         this.role = UserRole.USER;
     }
 
@@ -66,21 +100,7 @@ public class User  extends BaseEntity{
         this.level = level;
     }
 
-    public Set<Picture> getUserPictures() {
-        return userPictures;
-    }
 
-    public void setUserPictures(Set<Picture> userPictures) {
-        this.userPictures = userPictures;
-    }
-
-    public Set<Comment> getUserComments() {
-        return userComments;
-    }
-
-    public void setUserComments(Set<Comment> userComments) {
-        this.userComments = userComments;
-    }
 
     public UserRole getRole() {
         return role;
