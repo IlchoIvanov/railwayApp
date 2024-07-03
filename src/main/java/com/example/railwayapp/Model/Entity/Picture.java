@@ -1,7 +1,5 @@
 package com.example.railwayapp.Model.Entity;
 
-import com.example.railwayapp.Model.Entity.BaseEntity;
-import com.example.railwayapp.Model.Entity.Station;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -23,8 +21,7 @@ public class Picture extends BaseEntity {
     private User author;
     @OneToMany(mappedBy = "picture")
     private Set<Comment> comments;
-    @ManyToOne
-    private RailwayLine railwayLine;
+
 
     public Picture() {
         this.comments = new HashSet<>();
@@ -79,11 +76,5 @@ public class Picture extends BaseEntity {
         this.likes = likes;
     }
 
-    public RailwayLine getRailwayLine() {
-        return railwayLine;
-    }
 
-    public void setRailwayLine(RailwayLine railwayLine) {
-        this.railwayLine = railwayLine;
-    }
 }

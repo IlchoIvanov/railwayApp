@@ -10,14 +10,15 @@
         <div class="col-md-6">
             <h3> Железопътна линия <span th:text="${line.getNumber()}"></span>
             </h3>
+            <p class="font-weight-bold">Дължина: <span th:text="${line.getLength()}"></span>км</p>
             <p class="font-weight-bold">Маршрут: <span th:text="${line.getRoute()}"></span>
             </p>
             <p th:text="${line.getDescription()}">
 
             </p>
         </div>
-        <div class="col-md-6">
-            <img class="img-fluid" th:src="@{${randomPicturePath}}" alt=""/>
+        <div class="col-md-6 mx-auto ">
+            <img class="img-fluid rounded opacity-50" th:src="@{/images/jpkarta.jpg}" alt=""/>
         </div>
     </div>
 

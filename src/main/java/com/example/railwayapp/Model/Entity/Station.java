@@ -3,7 +3,9 @@ package com.example.railwayapp.Model.Entity;
 import com.example.railwayapp.Model.Entity.Enum.StationType;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -18,15 +20,15 @@ public class Station extends BaseEntity {
     private boolean ticketsSale;
     private String description;
     @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
-    private Set<Picture> pictures;
+    private List<Picture> pictures;
 
 
     @ManyToMany(mappedBy = "stations")
-    private Set<RailwayLine> railwayLines;
+    private List<RailwayLine> railwayLines;
 
     public Station() {
-     this.pictures = new HashSet<>();
-     this.railwayLines = new HashSet<>();
+     this.pictures = new ArrayList<>();
+     this.railwayLines = new ArrayList<>();
     }
 
 
@@ -65,19 +67,19 @@ public class Station extends BaseEntity {
 
 
 
-    public Set<Picture> getPictures() {
+    public List<Picture> getPictures() {
         return pictures;
     }
 
-    public void setPictures(Set<Picture> pictures) {
+    public void setPictures(List<Picture> pictures) {
         this.pictures = pictures;
     }
 
-    public Set<RailwayLine> getRailwayLines() {
+    public List<RailwayLine> getRailwayLines() {
         return railwayLines;
     }
 
-    public void setRailwayLines(Set<RailwayLine> railwayLines) {
+    public void setRailwayLines(List<RailwayLine> railwayLines) {
         this.railwayLines = railwayLines;
     }
 }

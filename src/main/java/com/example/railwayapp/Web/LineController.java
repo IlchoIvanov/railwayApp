@@ -22,9 +22,12 @@ public class LineController {
     @GetMapping("/lines/{id}")
     public String getLine(@PathVariable long id, Model model) {
          RailwayLine line = railwayLineService.findLineById(id);
+         if (line == null) {
+             return "redirect:/";
+         }
          model.addAttribute("line", line);
-        String randomPicturePath = pictureService.findRandomPicturePath(line.getNumber());
-        model.addAttribute("randomPicturePath", randomPicturePath);
+        String picturePath = "";
+        model.addAttribute("randomPicturePath", picturePath);
         return "line";
     }
 }

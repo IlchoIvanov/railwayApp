@@ -1,13 +1,27 @@
 package com.example.railwayapp.Web;
 
+import com.example.railwayapp.Sevice.StationService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class StationsController {
-    @GetMapping("/stations")
-    public ModelAndView stations(){
-        return new ModelAndView("stations");
+    private final StationService stationService;
+
+    public StationsController(StationService stationService) {
+        this.stationService = stationService;
     }
+
+    @GetMapping("/stations")
+    public String stations(Model model){
+        model.addAttribute("stations", stationService.getAllStationNames());
+        return "stations";
+    }
+    @GetMapping("/stops")
+    public String stops(Model model){
+        model.addAttribute("stations", stationService.getAllStopNames());
+        return "stations";
+    }
+
 }

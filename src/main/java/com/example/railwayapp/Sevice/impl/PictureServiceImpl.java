@@ -14,12 +14,4 @@ public class PictureServiceImpl implements PictureService {
         this.pictureRepository = pictureRepository;
     }
 
-    @Override
-    public String findRandomPicturePath(int railwayNumber) {
-        Picture firstByRailwayLineNumber = pictureRepository.findFirstByRailwayLine_Number(railwayNumber);
-        if (firstByRailwayLineNumber == null) {
-            return "";
-        }
-        return firstByRailwayLineNumber.getPath();
-    }
 }

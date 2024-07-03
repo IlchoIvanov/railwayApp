@@ -1,10 +1,9 @@
 package com.example.railwayapp.Model.Entity;
 
 import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "railway_lines")
@@ -19,13 +18,11 @@ public class RailwayLine extends BaseEntity {
     private String description;
 
     @ManyToMany
-    private Set<Station> stations;
-    @OneToMany(mappedBy = "railwayLine")
-    private Set<Picture> pictures;
+    private List<Station> stations;
+
 
     public RailwayLine() {
-        this.stations = new HashSet<>();
-        this.pictures = new HashSet<>();
+        this.stations = new ArrayList<>();
     }
 
     public int getNumber() {
@@ -60,21 +57,8 @@ public class RailwayLine extends BaseEntity {
         this.description = description;
     }
 
-    public Set<Station> getStations() {
-        return stations;
-    }
 
-    public void setStations(Set<Station> stations) {
-        this.stations = stations;
-    }
 
-    public Set<Picture> getPictures() {
-        return pictures;
-    }
-
-    public void setPictures(Set<Picture> pictures) {
-        this.pictures = pictures;
-    }
 
 
 }

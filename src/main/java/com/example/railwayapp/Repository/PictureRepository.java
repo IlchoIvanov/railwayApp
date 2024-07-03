@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface PictureRepository extends JpaRepository<Picture, Long >{
-    Picture findFirstByRailwayLine_Number(int railwayLine_number);
+
 }
