@@ -1,42 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/head}">
 </head>
 <body >
 <div th:replace="~{fragments/navbar}"></div>
 <p></p>
 <div class="d-flex justify-content-center">
-<form>
+    <p th:if="${loginError}" class="error">Грешен имейл или парола!</p>
+<form th:object="${loginData}" th:method="post" th:action="@{/login}">
     <!-- Email input -->
     <div data-mdb-input-init class="form-outline mb-4">
-        <input type="email" id="form2Example1" class="form-control" />
+        <input th:field="*{email}" type="email" name="email" id="form2Example1" class="form-control" />
         <label class="form-label" for="form2Example1">Email адрес</label>
     </div>
 
     <!-- Password input -->
     <div data-mdb-input-init class="form-outline mb-4">
-        <input type="password" id="form2Example2" class="form-control" />
+        <input th:field="*{password}" type="password" name="password"  id="form2Example2" class="form-control" />
         <label class="form-label" for="form2Example2">Парола</label>
     </div>
 
     <!-- 2 column grid layout for inline styling -->
-    <div class="row mb-4">
-        <div class="col d-flex justify-content-center">
-            <!-- Checkbox -->
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                <label class="form-check-label" for="form2Example31"> Запомни ме </label>
-            </div>
-        </div>
+<!--    <div class="row mb-4">-->
+<!--        <div class="col d-flex justify-content-center">-->
+<!--            &lt;!&ndash; Checkbox &ndash;&gt;-->
+<!--            <div class="form-check">-->
+<!--                <input class="form-check-input" name="remember-me" type="checkbox" value="" id="form2Example31" checked />-->
+<!--                <label class="form-check-label" for="form2Example31"> Запомни ме </label>-->
+<!--            </div>-->
+<!--        </div>-->
 
-        <div class="col">
-            <!-- Simple link -->
-            <a href="#!">Забрави ли си паролата?</a>
-        </div>
-    </div>
+<!--        <div class="col">-->
+<!--            &lt;!&ndash; Simple link &ndash;&gt;-->
+<!--            <a href="#!">Забрави ли си паролата?</a>-->
+<!--        </div>-->
+<!--    </div>-->
 
     <!-- Submit button -->
-    <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Влез</button>
+    <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Влез</button>
 
     <!-- Register buttons -->
     <div class="text-center ">

@@ -1,9 +1,11 @@
 package com.example.railwayapp.Web;
 
+import com.example.railwayapp.Model.Dto.UserLoginDto;
 import com.example.railwayapp.Model.Dto.UserRegisterDto;
 import com.example.railwayapp.Sevice.UserService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,7 +54,20 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String login() {
-        return "login";
+    public ModelAndView login() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login");
+        modelAndView.addObject("loginData", new UserLoginDto());
+
+        return modelAndView;
+    }
+    @GetMapping("/login-error")
+    public ModelAndView loginError() {
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login");
+        modelAndView.addObject("loginError", true);
+        modelAndView.addObject("loginData", new UserLoginDto());
+        return modelAndView;
     }
 }

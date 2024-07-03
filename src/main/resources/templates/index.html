@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html  class="bg-info" lang="en" xmlns:th="http://www.thymeleaf.org">
+<html  class="bg-info" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="~{fragments/head}"</head>
 <body>
 <div th:replace="~{fragments/navbar}"></div>
 <div class="bg-info">
-<h1 class="text-center">Добре дошли в уебсайта!</h1>
+<h1 sec:authorize="!isAuthenticated()" class="text-center">Добре дошли в уебсайта!</h1>
+    <h1 sec:authorize="isAuthenticated()" class="text-center">Добре дошли в уебсайта, <span sec:authentication="name"></span></h1>
 
 <p class="text-md-left">Сайтът съдържа списък с всички гари и спирки, както и снимки и информация за тях. Може да разгледате всички главни и второстепенни
     жп линии в България и тяхната номерация. Ако се регистрирате ще можете да добавятe снимки към гарите и спирките, както и да оставяте коментари и харесвания.</p>

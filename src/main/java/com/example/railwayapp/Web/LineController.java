@@ -12,11 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class LineController {
 
     private final RailwayLineService railwayLineService;
-    private final PictureService pictureService;
+
 
     public LineController(RailwayLineService railwayLineService, PictureService pictureService) {
         this.railwayLineService = railwayLineService;
-        this.pictureService = pictureService;
     }
 
     @GetMapping("/lines/{id}")
@@ -26,8 +25,7 @@ public class LineController {
              return "redirect:/";
          }
          model.addAttribute("line", line);
-        String picturePath = "";
-        model.addAttribute("randomPicturePath", picturePath);
+
         return "line";
     }
 }
