@@ -61,7 +61,7 @@ public class UserController {
 
         return modelAndView;
     }
-    @GetMapping("/login-error")
+    @PostMapping("/login-error")
     public ModelAndView loginError() {
 
         ModelAndView modelAndView = new ModelAndView();
@@ -69,5 +69,9 @@ public class UserController {
         modelAndView.addObject("loginError", true);
         modelAndView.addObject("loginData", new UserLoginDto());
         return modelAndView;
+    }
+    @GetMapping("/profile")
+    public String profile() {
+        return "profile";
     }
 }

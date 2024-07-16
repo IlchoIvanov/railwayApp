@@ -5,8 +5,8 @@
 <body >
 <div th:replace="~{fragments/navbar}"></div>
 <p></p>
+<div th:if="${loginError}" class="error d-flex justify-content-center">Грешен имейл или парола!</div>
 <div class="d-flex justify-content-center">
-    <p th:if="${loginError}" class="error">Грешен имейл или парола!</p>
 <form th:object="${loginData}" th:method="post" th:action="@{/login}">
     <!-- Email input -->
     <div data-mdb-input-init class="form-outline mb-4">

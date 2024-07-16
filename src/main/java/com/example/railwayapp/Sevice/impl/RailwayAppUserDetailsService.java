@@ -33,7 +33,7 @@ public class RailwayAppUserDetailsService implements UserDetailsService {
         return new RailwayAppUserDetails(
                 userEntity.getEmail(),
                 userEntity.getPassword(),
-                List.of(map(userEntity.getRole()))
+                List.of(map(userEntity.getRole())), userEntity.getUsername()
         );
     }
 
