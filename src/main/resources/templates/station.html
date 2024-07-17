@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html  class="bg-info" lang="en" xmlns:th="http://www.thymeleaf.org">
+<html class="bg-info" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="~{fragments/head}"></head>
 <body class="bg-info">
 <div th:replace="~{fragments/navbar}"></div>
 <p></p>
 
+<h3 class="text-center"> Железопътна <span th:if="${station.getStationType().name().equals('STOP')}" th:text="спирка"></span>
+    <span th:if="${station.getStationType().name().equals('STATION')}" th:text="гара"></span>
+    <span th:if="${station.getStationType().name().equals('RP')}" th:text="разделен пост"></span>
+    <span th:text="${station.getName()}"></span>
+</h3>
+<p class="font-weight-bold">Продажба на билети: <span th:if="${station.isTicketsSale()}" th:text="Има">Няма</span>
+    <span th:unless="${station.isTicketsSale()}" th:text="Няма"></span>
 
-            <h3 class="text-center"> Железопътна спирка Кликач</h3>
-            <p class="font-weight-bold">Наличие на гише за билети: НЕ </p>
+</p>
             <p class="font-weight-bold">Допълнителна информация:
+                <span th:text="${station.getDescription()}"></span>
             </p>
             <p class="font-weight-bold">Снимки:
             </p>
-                <a href="#" class="btn btn-primary btn-sm  justify-content-center">Добави снимка</a>
+                <a sec:authorize="isAuthenticated()" href="#" class="btn btn-primary btn-sm  justify-content-center">Добави снимка</a>
 <div class="container mt-4">
     <div class="row">
-        <div class="col-md-4">
+        <div th:each="picture: ${station.getPictures()}" class="col-md-4">
             <div class="card bg-warning">
-                <img th:src="@{/images/bdz.jpg}" class="card-img-top" alt="...">
+                <img th:src="${picture.getPath()}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">Автор: Клозет паша</p>
+                    <p class="card-text">Автор: <span th:text="${picture.getAuthor()}"></span></p>
                     <a href="#" class="btn btn-primary d-flex justify-content-center">Коментари</a>
                 </div>
             </div>

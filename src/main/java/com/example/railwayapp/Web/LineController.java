@@ -22,9 +22,7 @@ public class LineController {
     @GetMapping("/lines/{id}")
     public String getLine(@PathVariable long id, Model model) {
          RailwayLineViewDto line = railwayLineService.findLineById(id);
-         if (line == null) {
-             return "redirect:/";
-         }
+
          model.addAttribute("line", line);
 
         return "line";

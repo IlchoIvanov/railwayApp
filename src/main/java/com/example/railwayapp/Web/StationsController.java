@@ -15,12 +15,17 @@ public class StationsController {
 
     @GetMapping("/stations")
     public String stations(Model model){
-        model.addAttribute("stations", stationService.getAllStationNames());
+        model.addAttribute("stations", stationService.getAllStations());
         return "stations";
     }
     @GetMapping("/stops")
     public String stops(Model model){
-        model.addAttribute("stations", stationService.getAllStopNames());
+        model.addAttribute("stations", stationService.getAllStops());
+        return "stations";
+    }
+    @GetMapping("/rps")
+    public String rps(Model model){
+        model.addAttribute("stations", stationService.getAllRps());
         return "stations";
     }
 

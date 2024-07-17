@@ -8,7 +8,7 @@
 <div class="d-flex justify-content-center">
 
 <div class="list-group w-75 h-75 mx-auto" >
-    <a th:each="station : ${stations}" href="#" class="list-group-item list-group-item-action list-group-item-warning"><span th:text="${station}"></span></a>
+    <a th:each="station : ${stations}" th:href="@{/stations/{id}(id = ${station.getId()})}" th:text="${station.getName()}" class="list-group-item list-group-item-action list-group-item-warning"><span th:text="${station}"></span></a>
 </div>
     </div>
 
