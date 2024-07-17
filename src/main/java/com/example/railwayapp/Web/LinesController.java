@@ -1,5 +1,6 @@
 package com.example.railwayapp.Web;
 
+import com.example.railwayapp.Model.Dto.RailwayLineViewDto;
 import com.example.railwayapp.Model.Entity.RailwayLine;
 import com.example.railwayapp.Sevice.RailwayLineService;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ public class LinesController {
 
     @GetMapping("/lines")
     public String lines(Model model) {
-        List<RailwayLine> allRailwayLines = railwayLineService.getAllRailwayLines();
+        List<RailwayLineViewDto> allRailwayLines = railwayLineService.getAllRailwayLines();
         model.addAttribute("allRailwayLines", allRailwayLines);
         return "lines";
     }

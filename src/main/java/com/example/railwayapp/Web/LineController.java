@@ -1,5 +1,6 @@
 package com.example.railwayapp.Web;
 
+import com.example.railwayapp.Model.Dto.RailwayLineViewDto;
 import com.example.railwayapp.Model.Entity.RailwayLine;
 import com.example.railwayapp.Sevice.PictureService;
 import com.example.railwayapp.Sevice.RailwayLineService;
@@ -20,7 +21,7 @@ public class LineController {
 
     @GetMapping("/lines/{id}")
     public String getLine(@PathVariable long id, Model model) {
-         RailwayLine line = railwayLineService.findLineById(id);
+         RailwayLineViewDto line = railwayLineService.findLineById(id);
          if (line == null) {
              return "redirect:/";
          }

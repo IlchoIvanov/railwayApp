@@ -1,5 +1,6 @@
 package com.example.railwayapp.Sevice;
 
+import com.example.railwayapp.Model.Dto.RailwayLineViewDto;
 import com.example.railwayapp.Model.Entity.RailwayLine;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 public interface RailwayLineService {
 
 
-   RailwayLine findLineById(long id);
+   RailwayLineViewDto findLineById(long id);
 
-   List<RailwayLine> getAllRailwayLines();
+   List<RailwayLineViewDto> getAllRailwayLines();
 }
