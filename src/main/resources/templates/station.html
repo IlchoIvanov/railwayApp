@@ -53,7 +53,7 @@
                           th:action="@{/delete/picture/{id}/{station-id}(id = ${picture.getId()}, station-id = ${station.getId()})}">
                         <button type="submit" class="btn btn-primary d-flex justify-content-center  mx-auto bg-danger">Изтрий</button>
                     </form>
-                    <a href="#" class="btn btn-primary d-flex justify-content-center">Коментари</a>
+                    <a th:href="@{/comments/{picture-id}(picture-id = ${picture.getId()})}" class="btn btn-primary d-flex justify-content-center">Коментари</a>
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 package com.example.railwayapp.Sevice;
 
+import com.example.railwayapp.Model.Dto.CommentViewDto;
 import com.example.railwayapp.Model.Dto.PictureShortInfoDto;
 import com.example.railwayapp.Model.Entity.Picture;
 import com.example.railwayapp.Model.User.RailwayAppUserDetails;
@@ -17,6 +18,9 @@ public interface PictureService {
      void deletePictureById(Long id) throws IOException;
 
      void save(Picture picture);
+     String getPictureUrlById(Long id);
 
      void uploadPicture(MultipartFile image, @AuthenticationPrincipal RailwayAppUserDetails userDetails, Long stationId) throws IOException;
+
+    List<CommentViewDto> getPictureComments(Long pictureId);
 }

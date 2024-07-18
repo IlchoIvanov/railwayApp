@@ -2,7 +2,10 @@ package com.example.railwayapp.Sevice.impl;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.example.railwayapp.Model.Dto.CommentViewDto;
 import com.example.railwayapp.Model.Dto.PictureShortInfoDto;
+import com.example.railwayapp.Model.Entity.Comment;
+import com.example.railwayapp.Model.Entity.Enum.Level;
 import com.example.railwayapp.Model.Entity.Picture;
 import com.example.railwayapp.Model.Entity.Station;
 import com.example.railwayapp.Model.Entity.User;
@@ -70,6 +73,7 @@ public class PictureServiceImpl implements PictureService {
     @Override
     public Picture getPicturebyId(Long id) {
         return pictureRepository.findById(id).orElse(null);
+        //todo: throw if picture is null
     }
 
     @Override
@@ -88,6 +92,13 @@ public class PictureServiceImpl implements PictureService {
     @Override
     public void save(Picture picture) {
         pictureRepository.save(picture);
+    }
+
+    @Override
+    public String getPictureUrlById(Long id) {
+        Picture picturebyId = this.getPicturebyId(id);
+        //todo: throw if picture is null
+        return picturebyId.getPath();
     }
 
     @Override
@@ -111,12 +122,36 @@ public class PictureServiceImpl implements PictureService {
         if(!author.getVisitedStations().contains(station)){
             author.getVisitedStations().add(station);
         }
+        if(author.getVisitedStations().size()>50){
+            author.setLevel(Level.ПЪТЕШЕСТВЕНИК);
+        } else if (author.getVisitedStations().size()>10) {
+            author.setLevel(Level.НАПРЕДНАЛ);
+        }
         userRepository.save(author);
         this.save(picture);
         station.getPictures().add(picture);
         stationRepository.save(station);
 
     }
+
+    @Override
+    public List<CommentViewDto> getPictureComments(Long pictureId) {
+        Picture picture = pictureRepository.findById(pictureId).orElse(null);
+        //todo: throw if picture is null
+        List<Comment> comments = picture.getComments();
+        List<CommentViewDto> commentViewDtos = new ArrayList<>();
+        for (Comment comment : comments) {
+            CommentViewDto commentViewDto = new CommentViewDto();
+            commentViewDto.setContent(comment.getContent());
+            commentViewDto.setPictureId(comment.getPicture().getId());
+            commentViewDto.setTime(comment.getTime());
+            commentViewDto.setAuthor(comment.getAuthor().getUsername());
+            commentViewDtos.add(commentViewDto);
+        }
+
+        return commentViewDtos;
+    }
+
     private File convert(MultipartFile multipartFile) throws IOException {
         File file = new File(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         FileOutputStream fo = new FileOutputStream(file);
