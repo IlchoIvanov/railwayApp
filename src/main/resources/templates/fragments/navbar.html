@@ -28,6 +28,9 @@
                 <a class="nav-link" th:href="@{/login}">    Вход</a>
             </li>
             <li sec:authorize="isAuthenticated()" class="nav-item">
+                <a class="nav-link" th:href="@{/profile}">    Профил</a>
+            </li>
+            <li sec:authorize="isAuthenticated()" class="nav-item">
                 <form th:method="post" th:action="@{/logout}">
                 <button type="submit" class="nav-link" style="border: none; font-size: 1em; background: none">Изход</button>
                 </form>

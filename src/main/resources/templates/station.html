@@ -50,7 +50,7 @@
                         </button>
                     </form>
                     <form  class="d-flex justify-content-center" sec:authorize="hasRole('ROLE_ADMIN')" th:method="delete"
-                          th:action="@{/delete/picture/{id}(id = ${picture.getId()})}">
+                          th:action="@{/delete/picture/{id}/{station-id}(id = ${picture.getId()}, station-id = ${station.getId()})}">
                         <button type="submit" class="btn btn-primary d-flex justify-content-center  mx-auto bg-danger">Изтрий</button>
                     </form>
                     <a href="#" class="btn btn-primary d-flex justify-content-center">Коментари</a>

@@ -108,6 +108,9 @@ public class PictureServiceImpl implements PictureService {
         User author = userService.findUserByUsername(userDetails.getName());
         picture.setAuthor(author);
         author.getUserPictures().add(picture);
+        if(!author.getVisitedStations().contains(station)){
+            author.getVisitedStations().add(station);
+        }
         userRepository.save(author);
         this.save(picture);
         station.getPictures().add(picture);

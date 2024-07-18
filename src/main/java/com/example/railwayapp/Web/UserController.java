@@ -1,9 +1,13 @@
 package com.example.railwayapp.Web;
 
+import com.example.railwayapp.Model.Dto.UserInfoDto;
 import com.example.railwayapp.Model.Dto.UserLoginDto;
 import com.example.railwayapp.Model.Dto.UserRegisterDto;
+import com.example.railwayapp.Model.Entity.User;
+import com.example.railwayapp.Model.User.RailwayAppUserDetails;
 import com.example.railwayapp.Sevice.UserService;
 import jakarta.validation.Valid;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -71,7 +75,14 @@ public class UserController {
         return modelAndView;
     }
     @GetMapping("/profile")
-    public String profile() {
+    public String profile(@AuthenticationPrincipal RailwayAppUserDetails userDetails, Model model) {
+        if(userDetails == null) {
+            return "index";
+        }
+        UserInfoDto userInfo = userService.findUserInfoByEmail(userDetails.getUsername());
+        model.addAttribute("user", userInfo);
+        String visitedStations = String.join(",", userInfo.getVisitedStations());
+        model.addAttribute("visitedStations", visitedStations);
         return "profile";
     }
 }

@@ -4,18 +4,19 @@
 </head>
 <body class="bg-info" >
 <div th:replace="~{fragments/navbar}"></div>
-<section class="vh-100" >
+<section class="vh-100 bg-info" >
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col col-lg-6 mb-4 mb-lg-0">
-                <div class="card mb-3" style="border-radius: .5rem;">
+            <div class="col col-lg-6 mb-4 mb-lg-0 bg-warning">
+                <div class="card mb-3 bg-warning" style="border-radius: .5rem;">
                     <div class="row g-0">
                         <div class="col-md-4 gradient-custom text-center text-white"
                              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                             <img src="/images/profile-user.png"
                                  alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                            <h5>Marie Horwitz</h5>
-                            <p>Web Designer</p>
+                            <h5 th:text="${user.getUsername()}"></h5>
+                            <p th:if="${user.getRole().toString().equals('ADMIN')}" th:text="Администратор"></p>
+                            <p th:if="${user.getRole().toString().equals('USER')}" th:text="Потребител"></p>
                             <i class="far fa-edit mb-5"></i>
                         </div>
                         <div class="col-md-8">
@@ -25,22 +26,25 @@
                                 <div class="row pt-1">
                                     <div class="col-6 mb-3">
                                         <h6>Email</h6>
-                                        <p class="text-muted">info@example.com</p>
+                                        <p  class="text-muted" th:text="${user.getEmail()}"></p>
                                     </div>
                                     <div class="col-6 mb-3">
-                                        <h6>Потребителско име</h6>
-                                        <p class="text-muted">123 456 789</p>
+                                        <h6>Ниво</h6>
+                                        <p class="text-muted" th:text="${user.getLevel()}"></p>
                                     </div>
                                 </div>
                                 <hr class="mt-0 mb-4">
                                 <div class="row pt-1">
                                     <div class="col-6 mb-3">
                                         <h6>Брой качени снимки</h6>
-                                        <p class="text-muted">Lorem ipsum</p>
+                                        <p class="text-muted" th:text="${user.getUploadedPictures()}"></p>
                                     </div>
                                     <div class="col-6 mb-3">
-                                        <h6>Брой посетени гари и спирки</h6>
-                                        <p class="text-muted">Dolor sit amet</p>
+                                        <h6>Посетени гари и спирки(
+                                            <span th:text="${user.getVisitedStations().size()}"></span>
+                                            )
+                                        </h6>
+                                        <p class="text-muted" th:text="${visitedStations}"></p>
                                     </div>
                                 </div>
                             </div>
