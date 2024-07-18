@@ -12,10 +12,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -32,11 +29,15 @@ public class CommentsController {
     }
 
     @GetMapping("/comments/{picture-id}")
-    public String comments(@PathVariable("picture-id") Long pictureId, Model model){
+    public String comments(@PathVariable("picture-id") Long pictureId, Model model, @AuthenticationPrincipal RailwayAppUserDetails userDetails){
         List<CommentViewDto> pictureComments = pictureService.getPictureComments(pictureId);
         model.addAttribute("pictureComments", pictureComments);
         model.addAttribute("pictureUrl", pictureService.getPictureUrlById(pictureId));
         model.addAttribute("pictureId", pictureId);
+        if(userDetails == null){
+            return "comments";
+        }
+        model.addAttribute("user", userDetails.getName());
         return "comments";
     }
 
@@ -61,4 +62,12 @@ public class CommentsController {
            commentService.postComment(commentData);
         return "redirect:/comments/" + pictureId;
     }
+
+    @DeleteMapping("/delete/comments/{id}/{picture-id}")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    public String deleteComment(@PathVariable Long id, @PathVariable("picture-id") Long pictureId){
+       commentService.deleteCommentById(id);
+        return "redirect:/comments/" + pictureId;
+    }
+
 }

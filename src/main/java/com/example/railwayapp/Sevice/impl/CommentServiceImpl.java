@@ -47,4 +47,17 @@ public class CommentServiceImpl implements CommentService {
         userRepository.save(author);
         pictureRepository.save(picture);
     }
+
+    @Override
+    public void deleteCommentById(Long id) {
+        Comment comment = commentRepository.findById(id).orElse(null);
+        // todo: throw if comment is null
+        User author =  comment.getAuthor();
+        author.getUserComments().remove(comment);
+        userRepository.save(comment.getAuthor());
+        Picture picture = comment.getPicture();
+        picture.getComments().remove(comment);
+        pictureRepository.save(picture);
+        commentRepository.delete(comment);
+    }
 }

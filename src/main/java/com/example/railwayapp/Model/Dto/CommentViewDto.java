@@ -4,6 +4,7 @@ package com.example.railwayapp.Model.Dto;
 import java.time.LocalDateTime;
 
 public class CommentViewDto {
+    private Long id;
     private String content;
     private String author;
     private LocalDateTime time;
@@ -39,5 +40,13 @@ public class CommentViewDto {
 
     public void setPictureId(Long pictureId) {
         this.pictureId = pictureId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

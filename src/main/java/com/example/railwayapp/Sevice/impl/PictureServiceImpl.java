@@ -146,6 +146,7 @@ public class PictureServiceImpl implements PictureService {
             commentViewDto.setPictureId(comment.getPicture().getId());
             commentViewDto.setTime(comment.getTime());
             commentViewDto.setAuthor(comment.getAuthor().getUsername());
+            commentViewDto.setId(comment.getId());
             commentViewDtos.add(commentViewDto);
         }
 
