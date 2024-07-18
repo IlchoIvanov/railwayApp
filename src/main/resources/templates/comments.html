@@ -19,7 +19,7 @@
                                  height="50"/>
                             <div>
                                 <h6 th:text="${comment.getAuthor()}" class="fw-bold text-primary mb-1"></h6>
-                                <p th:text="${comment.getTime()}" class="text-muted small mb-0">
+                                <p th:text="${#temporals.format(comment.getTime(), 'dd-MM-yyyy HH:mm')}" class="text-muted small mb-0">
 
                                 </p>
                             </div>
