@@ -7,7 +7,7 @@ import com.example.railwayapp.Model.Entity.Picture;
 import com.example.railwayapp.Model.Entity.Station;
 import com.example.railwayapp.Repository.StationRepository;
 import com.example.railwayapp.Sevice.StationService;
-import com.example.railwayapp.Sevice.StationShortDto;
+import com.example.railwayapp.Model.Dto.StationShortDto;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -70,7 +70,7 @@ public class StationServiceImpl implements StationService {
     }
 
     @Override
-    public StationViewDto getStationById(long id) {
+    public StationViewDto getStationInfoById(long id) {
         //TODO: modelMapper and exception
         Optional<Station> byId = stationrepository.findById(id);
         if (byId.isPresent()) {
@@ -97,5 +97,10 @@ public class StationServiceImpl implements StationService {
         }else{
             return null;
         }
+    }
+
+    @Override
+    public Station getStationById(long id) {
+        return stationrepository.getById(id);
     }
 }

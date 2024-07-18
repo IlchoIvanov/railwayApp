@@ -3,7 +3,9 @@ package com.example.railwayapp.Model.Entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -17,14 +19,16 @@ public class Picture extends BaseEntity {
     private LocalDate date;
     @Column(nullable = false)
     private int likes;
+    @Column(nullable = false, name = "cloudinary_id")
+    private String CloudinaryId;
     @ManyToOne(optional = false)
     private User author;
     @OneToMany(mappedBy = "picture")
-    private Set<Comment> comments;
+    private List<Comment> comments;
 
 
     public Picture() {
-        this.comments = new HashSet<>();
+        this.comments = new ArrayList<>();
     }
 
     public String getPath() {
@@ -60,13 +64,7 @@ public class Picture extends BaseEntity {
         this.author = author;
     }
 
-    public Set<Comment> getComments() {
-        return comments;
-    }
 
-    public void setComments(Set<Comment> comments) {
-        this.comments = comments;
-    }
 
     public int getLikes() {
         return likes;
@@ -77,4 +75,19 @@ public class Picture extends BaseEntity {
     }
 
 
+    public String getCloudinaryId() {
+        return CloudinaryId;
+    }
+
+    public void setCloudinaryId(String cloudinaryId) {
+        CloudinaryId = cloudinaryId;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 }

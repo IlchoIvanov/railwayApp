@@ -1,4 +1,4 @@
-package com.example.railwayapp.Sevice;
+package com.example.railwayapp.Model.Dto;
 
 public class StationShortDto {
     private long id;

@@ -5,7 +5,8 @@
 <div th:replace="~{fragments/navbar}"></div>
 <p></p>
 
-<h3 class="text-center"> Железопътна <span th:if="${station.getStationType().name().equals('STOP')}" th:text="спирка"></span>
+<h3 class="text-center"> Железопътна <span th:if="${station.getStationType().name().equals('STOP')}"
+                                           th:text="спирка"></span>
     <span th:if="${station.getStationType().name().equals('STATION')}" th:text="гара"></span>
     <span th:if="${station.getStationType().name().equals('RP')}" th:text="разделен пост"></span>
     <span th:text="${station.getName()}"></span>
@@ -14,12 +15,26 @@
     <span th:unless="${station.isTicketsSale()}" th:text="Няма"></span>
 
 </p>
-            <p class="font-weight-bold">Допълнителна информация:
-                <span th:text="${station.getDescription()}"></span>
-            </p>
-            <p class="font-weight-bold">Снимки:
-            </p>
-                <a sec:authorize="isAuthenticated()" href="#" class="btn btn-primary btn-sm  justify-content-center">Добави снимка</a>
+<p class="font-weight-bold">Допълнителна информация:
+    <span th:text="${station.getDescription()}"></span>
+</p>
+<p class="font-weight-bold">Снимки:
+</p>
+
+
+<form sec:authorize="isAuthenticated()" th:method="post"
+      th:action="@{/stations/add_image/{station_id}(station_id=${station.getId()})}" enctype="multipart/form-data">
+    <div class="form-group">
+        <input type="file" name="image" accept="image/*" class="form-control-file">
+    </div>
+    <button disabled="disabled" type="submit" class="btn btn-primary">Качи снимка</button>
+</form>
+
+<script>
+    document.querySelector("input[type=file]").onchange = ({ target: { value } }) => {
+        $('button:submit').removeAttr('disabled');
+    };
+</script>
 <div class="container mt-4">
     <div class="row">
         <div th:each="picture: ${station.getPictures()}" class="col-md-4">
@@ -27,6 +42,17 @@
                 <img th:src="${picture.getPath()}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <p class="card-text">Автор: <span th:text="${picture.getAuthor()}"></span></p>
+                    <form class="d-flex justify-content-center "  sec:authorize="hasRole('ROLE_USER')"  th:if="${user.equals(picture.getAuthor())}" th:method="delete"
+                          th:action="@{/delete/picture/{id}/{station-id}(id = ${picture.getId()}, station-id = ${station.getId()})}">
+                        <button type="submit"
+                                class="btn btn-primary d-flex justify-content-center  mx-auto bg-danger"
+                                >Изтрий
+                        </button>
+                    </form>
+                    <form  class="d-flex justify-content-center" sec:authorize="hasRole('ROLE_ADMIN')" th:method="delete"
+                          th:action="@{/delete/picture/{id}(id = ${picture.getId()})}">
+                        <button type="submit" class="btn btn-primary d-flex justify-content-center  mx-auto bg-danger">Изтрий</button>
+                    </form>
                     <a href="#" class="btn btn-primary d-flex justify-content-center">Коментари</a>
                 </div>
             </div>
@@ -34,7 +60,6 @@
     </div>
     <!-- Add more rows and columns as needed -->
 </div>
-
 
 
 <footer th:replace="~{fragments/footer}"></footer>
