@@ -23,12 +23,9 @@ public class Station extends BaseEntity {
     private List<Picture> pictures;
 
 
-    @ManyToMany(mappedBy = "stations")
-    private List<RailwayLine> railwayLines;
 
     public Station() {
      this.pictures = new ArrayList<>();
-     this.railwayLines = new ArrayList<>();
     }
 
 
@@ -75,11 +72,5 @@ public class Station extends BaseEntity {
         this.pictures = pictures;
     }
 
-    public List<RailwayLine> getRailwayLines() {
-        return railwayLines;
-    }
 
-    public void setRailwayLines(List<RailwayLine> railwayLines) {
-        this.railwayLines = railwayLines;
-    }
 }

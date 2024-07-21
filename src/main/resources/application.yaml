@@ -36,7 +36,9 @@ logging:
 
 
 
-
+rail-lines:
+  api:
+    baseUrl: "http://localhost:8081"
 
 
 

@@ -1,56 +1,60 @@
 package com.example.railwayapp.Sevice.impl;
 
+import com.example.railwayapp.Model.Dto.RailwayLineAddDto;
 import com.example.railwayapp.Model.Dto.RailwayLineViewDto;
-import com.example.railwayapp.Model.Entity.RailwayLine;
-import com.example.railwayapp.Repository.RailwayLineRepository;
 import com.example.railwayapp.Sevice.PictureService;
 import com.example.railwayapp.Sevice.RailwayLineService;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClient;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class RailwayLineServiceImpl implements RailwayLineService {
-    private final RailwayLineRepository railwayLineRepository;
-    private final PictureService pictureService;
 
-    public RailwayLineServiceImpl(RailwayLineRepository railwayLineRepository, PictureService pictureService) {
-        this.railwayLineRepository = railwayLineRepository;
+    private final PictureService pictureService;
+    private final RestClient restClient;
+
+    public RailwayLineServiceImpl( PictureService pictureService, RestClient restClient) {
+
         this.pictureService = pictureService;
+        this.restClient = restClient;
     }
 
 
     @Override
     public RailwayLineViewDto findLineById(long id) {
-        RailwayLine railwayLine = railwayLineRepository.findById(id).orElse(null);
-        if(railwayLine == null){
-            return null;
-            //TODO: throw exception
-        }
-        RailwayLineViewDto dto = new RailwayLineViewDto();
-        dto.setId(railwayLine.getId());
-        dto.setDescription(railwayLine.getDescription());
-        dto.setLength(railwayLine.getLength());
-        dto.setNumber(railwayLine.getNumber());
-        dto.setRoute(railwayLine.getRoute());
-        return dto;
+        return restClient
+                .get()
+                .uri("http://localhost:8081/{id}", id)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .body(RailwayLineViewDto.class);
     }
 
     @Override
     public List<RailwayLineViewDto> getAllRailwayLines() {
-        List<RailwayLine> all = railwayLineRepository.findAll();
-        List<RailwayLineViewDto> dtos = new ArrayList<>();
-        for (RailwayLine railwayLine : all) {
-            RailwayLineViewDto dto = new RailwayLineViewDto();
-            dto.setId(railwayLine.getId());
-            dto.setDescription(railwayLine.getDescription());
-            dto.setLength(railwayLine.getLength());
-            dto.setNumber(railwayLine.getNumber());
-            dto.setRoute(railwayLine.getRoute());
-            dtos.add(dto);
-        }
-        return dtos;
+        return restClient
+                .get()
+                .uri("http://localhost:8081/lines")
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .body(new ParameterizedTypeReference<>(){});
+
+    }
+
+    @Override
+    public void addLine(RailwayLineAddDto lineData) {
+          restClient.post().uri("http://localhost:8081/add").body(lineData).retrieve();
+    }
+
+    @Override
+    public void deleteLineById(long id) {
+
+                restClient.delete().uri("http://localhost:8081/{id}", id).retrieve();
+
+
     }
 }

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html class="bg-info" lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/head}"></head>
+<body class="bg-info">
+<div th:replace="~{fragments/navbar}"></div>
+<h1  class="text-center">Добавяне на жп линия</h1>
+<div class="d-flex justify-content-center">
+    <form th:object="${lineData}" th:method="post" th:action="@{/lines/add}" name="form" id="form">
+
+        <div data-mdb-input-init class="form-outline mb-4">
+            <input th:field="*{number}" th:errorclass="'is-invalid bg-danger'" type="text" id="number" class="form-control" />
+            <label class="form-label" for="number">Номер на жп линията</label>
+            <br>
+            <small th:if="${#fields.hasErrors('number')}" th:errors="*{number}" class="danger">Number error message</small>
+        </div>
+
+        <div data-mdb-input-init class="form-outline mb-4">
+            <input th:field="*{route}" th:errorclass="'is-invalid bg-danger'" type="text" id="route" class="form-control" />
+            <label class="form-label" for="route">Маршрут</label>
+            <br>
+            <small th:if="${#fields.hasErrors('route')}" th:errors="*{route}" class="danger">Route error message</small>
+        </div>
+        <div data-mdb-input-init class="form-outline mb-4">
+            <input th:field="*{length}" th:errorclass="'is-invalid bg-danger'" type="number" step="0.01" id="length" class="form-control" />
+            <label class="form-label" for="length">Дължина</label>
+            <br>
+            <small th:if="${#fields.hasErrors('length')}" th:errors="*{length}" class="danger">Length error message</small>
+        </div>
+        <div data-mdb-input-init class="form-outline mb-4">
+          <textarea th:errorclass="'is-invalid bg-danger'" th:field="*{description}" form="form"
+                    class="form-control" id="textAreaExample" rows="4"
+                    style="background: #fff;"></textarea>
+            <label class="form-label" for="textAreaExample">Напиши коментар</label>
+            <br>
+            <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="danger">Description
+                error message</small>
+        </div>
+
+
+
+        <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">Добави</button>
+    </form>
+</div>
+<footer th:replace="~{fragments/footer}"></footer>
+</body>
+</html>
