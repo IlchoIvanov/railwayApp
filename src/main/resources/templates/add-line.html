@@ -30,7 +30,7 @@
           <textarea th:errorclass="'is-invalid bg-danger'" th:field="*{description}" form="form"
                     class="form-control" id="textAreaExample" rows="4"
                     style="background: #fff;"></textarea>
-            <label class="form-label" for="textAreaExample">Напиши коментар</label>
+            <label class="form-label" for="textAreaExample">Добави описание</label>
             <br>
             <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="danger">Description
                 error message</small>
