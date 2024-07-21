@@ -7,6 +7,7 @@ import com.example.railwayapp.Model.Entity.User;
 import com.example.railwayapp.Model.User.RailwayAppUserDetails;
 import com.example.railwayapp.Sevice.UserService;
 import jakarta.validation.Valid;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -89,6 +90,7 @@ public class UserController {
     }
 
     @GetMapping("/all-users")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String allUsers(Model model) {
         List<UserInfoDto> allUsers = userService.getAllUsers();
         model.addAttribute("users", allUsers);
