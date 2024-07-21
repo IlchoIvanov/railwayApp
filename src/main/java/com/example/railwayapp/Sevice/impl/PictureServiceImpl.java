@@ -16,6 +16,7 @@ import com.example.railwayapp.Repository.UserRepository;
 import com.example.railwayapp.Sevice.PictureService;
 import com.example.railwayapp.Sevice.StationService;
 import com.example.railwayapp.Sevice.UserService;
+import jakarta.transaction.Transactional;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -77,6 +78,7 @@ public class PictureServiceImpl implements PictureService {
     }
 
     @Override
+    @Transactional
     public void deletePictureById(Long id) throws IOException {
         Picture picture = pictureRepository.findById(id).orElse(null);
         Station station = picture.getStation();

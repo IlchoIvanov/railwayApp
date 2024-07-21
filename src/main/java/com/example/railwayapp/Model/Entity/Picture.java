@@ -23,7 +23,7 @@ public class Picture extends BaseEntity {
     private String CloudinaryId;
     @ManyToOne(optional = false)
     private User author;
-    @OneToMany(mappedBy = "picture")
+    @OneToMany(mappedBy = "picture", cascade = CascadeType.ALL)
     private List<Comment> comments;
 
 

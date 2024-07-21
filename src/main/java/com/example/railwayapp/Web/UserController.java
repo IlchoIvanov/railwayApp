@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
 @Controller
 public class UserController {
     private final UserService userService;
@@ -84,5 +86,13 @@ public class UserController {
         String visitedStations = String.join(",", userInfo.getVisitedStations());
         model.addAttribute("visitedStations", visitedStations);
         return "profile";
+    }
+
+    @GetMapping("/all-users")
+    public String allUsers(Model model) {
+        List<UserInfoDto> allUsers = userService.getAllUsers();
+        model.addAttribute("users", allUsers);
+        return "profiles";
+
     }
 }
