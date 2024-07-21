@@ -6,7 +6,7 @@ import com.example.railwayapp.Model.Entity.Station;
 import com.example.railwayapp.Model.Entity.User;
 import com.example.railwayapp.Repository.UserRepository;
 import com.example.railwayapp.Sevice.UserService;
-import jakarta.validation.constraints.Size;
+import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,18 +18,18 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
+    private final ModelMapper modelMapper;
 
-    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository) {
+    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository, ModelMapper modelMapper) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Override
     public void registerUser(UserRegisterDto data) {
-        User user = new User();
-        user.setUsername(data.getUsername());
+        User user = modelMapper.map(data, User.class);
         user.setPassword(passwordEncoder.encode(data.getPassword()));
-        user.setEmail(data.getEmail());
         userRepository.save(user);
     }
 
@@ -46,15 +46,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserInfoDto findUserInfoByEmail(String username) {
         User user = findUserByEmail(username);
-        UserInfoDto userInfoDto = new UserInfoDto();
-        userInfoDto.setUsername(user.getUsername());
-        userInfoDto.setEmail(user.getEmail());
-        userInfoDto.setId(user.getId());
-        userInfoDto.setLevel(user.getLevel());
-        userInfoDto.setRole(user.getRole());
+        UserInfoDto userInfoDto = modelMapper.map(user, UserInfoDto.class);
         userInfoDto.setUploadedPictures(user.getUserPictures().size());
         userInfoDto.setVisitedStations(user.getVisitedStations().stream().map(Station::getName).collect(Collectors.toCollection(ArrayList::new)));
-        //todo: mapper
         return userInfoDto;
     }
 
@@ -63,12 +57,7 @@ public class UserServiceImpl implements UserService {
         List<User> all = userRepository.findAll();
         List<UserInfoDto> userInfoDtos = new ArrayList<>();
         for (User user : all) {
-            UserInfoDto userInfoDto = new UserInfoDto();
-            userInfoDto.setUsername(user.getUsername());
-            userInfoDto.setEmail(user.getEmail());
-            userInfoDto.setId(user.getId());
-            userInfoDto.setLevel(user.getLevel());
-            userInfoDto.setRole(user.getRole());
+            UserInfoDto userInfoDto = modelMapper.map(user, UserInfoDto.class);
             userInfoDto.setUploadedPictures(user.getUserPictures().size());
             userInfoDto.setVisitedStations(user.getVisitedStations().stream().map(Station::getName).collect(Collectors.toList()));
             userInfoDtos.add(userInfoDto);

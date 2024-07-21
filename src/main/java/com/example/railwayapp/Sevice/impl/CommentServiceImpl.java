@@ -36,7 +36,7 @@ public class CommentServiceImpl implements CommentService {
         Comment comment = new Comment();
         comment.setContent(commentData.getContent());
         User author = userService.findUserByUsername(commentData.getAuthor());
-        comment.setAuthor(userService.findUserByUsername(commentData.getAuthor()));
+        comment.setAuthor(author);
         comment.setTime(LocalDateTime.now());
         Picture picture = pictureService.getPicturebyId(commentData.getPictureId());
         comment.setPicture(picture);

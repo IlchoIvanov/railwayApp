@@ -17,6 +17,7 @@ import com.example.railwayapp.Sevice.PictureService;
 import com.example.railwayapp.Sevice.StationService;
 import com.example.railwayapp.Sevice.UserService;
 import jakarta.transaction.Transactional;
+import org.modelmapper.ModelMapper;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -41,8 +42,9 @@ public class PictureServiceImpl implements PictureService {
     private final UserService userService;
     private final StationRepository stationRepository;
     private final UserRepository userRepository;
+    private final ModelMapper modelMapper;
 
-    public PictureServiceImpl(PictureRepository pictureRepository, StationService stationService, Cloudinary cloudinary, UserService userService,  StationRepository stationRepository, UserRepository userRepository) {
+    public PictureServiceImpl(PictureRepository pictureRepository, StationService stationService, Cloudinary cloudinary, UserService userService, StationRepository stationRepository, UserRepository userRepository, ModelMapper modelMapper) {
         this.pictureRepository = pictureRepository;
         this.stationService = stationService;
         this.cloudinary = cloudinary;
@@ -50,6 +52,7 @@ public class PictureServiceImpl implements PictureService {
 
         this.stationRepository = stationRepository;
         this.userRepository = userRepository;
+        this.modelMapper = modelMapper;
     }
 
 
@@ -59,12 +62,9 @@ public class PictureServiceImpl implements PictureService {
         Station station = stationService.getStationById(stationId);
         List<Picture> pictures = station.getPictures();
         List<PictureShortInfoDto> pictureShortInfoDtos = new ArrayList<>();
-        //TODO: modelMapper
         for (Picture picture : pictures) {
-            PictureShortInfoDto pictureShortInfoDto = new PictureShortInfoDto();
-            pictureShortInfoDto.setId(picture.getId());
+            PictureShortInfoDto pictureShortInfoDto = modelMapper.map(picture, PictureShortInfoDto.class);
             pictureShortInfoDto.setAuthor(picture.getAuthor().getUsername());
-            pictureShortInfoDto.setPath(picture.getPath());
             pictureShortInfoDtos.add(pictureShortInfoDto);
         }
 
@@ -143,12 +143,9 @@ public class PictureServiceImpl implements PictureService {
         List<Comment> comments = picture.getComments();
         List<CommentViewDto> commentViewDtos = new ArrayList<>();
         for (Comment comment : comments) {
-            CommentViewDto commentViewDto = new CommentViewDto();
-            commentViewDto.setContent(comment.getContent());
+            CommentViewDto commentViewDto = modelMapper.map(comment, CommentViewDto.class);
             commentViewDto.setPictureId(comment.getPicture().getId());
-            commentViewDto.setTime(comment.getTime());
             commentViewDto.setAuthor(comment.getAuthor().getUsername());
-            commentViewDto.setId(comment.getId());
             commentViewDtos.add(commentViewDto);
         }
 

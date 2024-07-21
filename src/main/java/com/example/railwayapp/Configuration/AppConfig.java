@@ -2,6 +2,7 @@ package com.example.railwayapp.Configuration;
 
 import com.example.railwayapp.Repository.StationRepository;
 import com.example.railwayapp.Repository.UserRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ResourceLoader;
@@ -19,6 +20,12 @@ public class AppConfig {
     public PasswordEncoder  passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
+
     @Bean
     public DataSourceInitializer dataSourceInitializer(DataSource dataSource,
                                                        StationRepository stationRepository, UserRepository userRepository,
