@@ -60,4 +60,11 @@ public class CommentServiceImpl implements CommentService {
         pictureRepository.save(picture);
         commentRepository.delete(comment);
     }
+
+    @Override
+    public void deleteOldComments() {
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime beforeTwoYears = now.minusYears(2L);
+        commentRepository.deleteOlderComments(beforeTwoYears);
+    }
 }

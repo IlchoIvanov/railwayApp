@@ -6,4 +6,6 @@ public interface CommentService {
     void postComment(CommentAddDto commentData);
 
     void deleteCommentById(Long id);
+    public void deleteOldComments();
+
 }
