@@ -3,12 +3,11 @@
 <head th:replace="~{fragments/head}"></head>
 <body class="bg-info">
 <div th:replace="~{fragments/navbar}"></div>
-<h1  class="text-center">Контакти</h1>
+<h1  th:text="#{nav_bar_contacts}" class="text-center">Контакти</h1>
 <div class="w-75 h-75 mx-auto">
     <p>
-        <b>Email</b>: ilcho.ivanov11@gmail.com
-        <br>
-        <i class="fa-brands fa-instagram"></i>
+        <b th:text="#{register_email}">Email</b>: ilcho.ivanov11@gmail.com
+
     </p>
 
 </div>

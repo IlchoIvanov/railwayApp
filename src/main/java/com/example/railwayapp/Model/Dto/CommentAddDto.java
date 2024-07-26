@@ -5,8 +5,8 @@ import jakarta.validation.constraints.Size;
 
 public class CommentAddDto {
     private Long pictureId;
-    @NotNull(message = "Коментарът не може да е празен")
-    @Size(min = 3, max = 400, message = "Коментарът трябва да бъде между 3 и 400 символа")
+    @NotNull(message = "{comment_not_null}")
+    @Size(min = 3, max = 400, message = "{comment_size}")
     private String content;
     private String author;
 
@@ -18,11 +18,11 @@ public class CommentAddDto {
         this.pictureId = pictureId;
     }
 
-    public @NotNull(message = "Коментарът не може да е празен") @Size(min = 3, max = 400, message = "Коментарът трябва да бъде между 3 и 400 символа") String getContent() {
+    public @NotNull(message = "{comment_not_null}") @Size(min = 3, max = 400, message = "{comment_size}") String getContent() {
         return content;
     }
 
-    public void setContent(@NotNull(message = "Коментарът не може да е празен") @Size(min = 3, max = 400, message = "Коментарът трябва да бъде между 3 и 400 символа") String content) {
+    public void setContent(@NotNull(message = "{comment_not_null}") @Size(min = 3, max = 400, message = "{comment_size}") String content) {
         this.content = content;
     }
 

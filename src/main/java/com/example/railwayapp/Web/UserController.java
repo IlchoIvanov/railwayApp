@@ -3,7 +3,6 @@ package com.example.railwayapp.Web;
 import com.example.railwayapp.Model.Dto.UserInfoDto;
 import com.example.railwayapp.Model.Dto.UserLoginDto;
 import com.example.railwayapp.Model.Dto.UserRegisterDto;
-import com.example.railwayapp.Model.Entity.User;
 import com.example.railwayapp.Model.User.RailwayAppUserDetails;
 import com.example.railwayapp.Sevice.UserService;
 import jakarta.validation.Valid;

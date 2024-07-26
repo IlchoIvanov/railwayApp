@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-warning" xmlns:sec="http://www.w3.org/1999/xhtml">
-    <div class="navbar-brand">ЖП гари, спирки и линии</div>
+    <div class="navbar-brand"  th:text="#{nav_bar_title}">ЖП гари, спирки и линии</div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -8,41 +8,54 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" th:href="@{/}">Начало <span class="sr-only">(current)</span></a>
+                <a class="nav-link" th:href="@{/}"  th:text="#{nav_bar_home}">Начало</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle"  th:text="#{nav_bar_list_with_stations_and_stops}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Списък с гари и спирки
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" th:href="@{/stations}">Списък с гари</a>
-                    <a class="dropdown-item" th:href="@{/stops}">Списък със спирки</a>
+                    <a class="dropdown-item" th:href="@{/stations}"  th:text="#{nav_bar_list_with_stations}">Списък с гари</a>
+                    <a class="dropdown-item" th:href="@{/stops}" th:text="#{nav_bar_list_with_stops}">Списък със спирки</a>
                 </div>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/lines}">   Жп линии</a>
+                <a class="nav-link" th:href="@{/lines}" th:text="#{nav_bar_lines}">   Жп линии</a>
             </li>
             <li sec:authorize="!isAuthenticated()" class="nav-item">
-                <a class="nav-link" th:href="@{/register}">    Регистрация</a>
+                <a class="nav-link" th:href="@{/register}" th:text="#{nav_bar_resister}">    Регистрация</a>
             </li>
             <li sec:authorize="!isAuthenticated()" class="nav-item">
-                <a class="nav-link" th:href="@{/login}">    Вход</a>
+                <a class="nav-link" th:href="@{/login}" th:text="#{nav_bar_login}">    Вход</a>
             </li>
             <li  class="nav-item">
-                <a class="nav-link" th:href="@{/about}">    За нас</a>
+                <a class="nav-link" th:href="@{/about}" th:text="#{nav_bar_about}">    За нас</a>
             </li>
             <li sec:authorize="isAuthenticated()" class="nav-item">
-                <a class="nav-link" th:href="@{/profile}">    Профил</a>
+                <a class="nav-link" th:href="@{/profile}" th:text="#{nav_bar_profile}">    Профил</a>
             </li>
             <li sec:authorize="isAuthenticated()" class="nav-item">
                 <form th:method="post" th:action="@{/logout}">
-                <button type="submit" class="nav-link" style="border: none; font-size: 1em; background: none">Изход</button>
+                <button type="submit" class="nav-link" style="border: none; font-size: 1em; background: none" th:text="#{nav_bar_logout}">Изход</button>
                 </form>
             </li>
             <li  class="nav-item">
-                <a class="nav-link" th:href="@{/contacts}">    Контакти</a>
+                <a class="nav-link" th:href="@{/contacts}" th:text="#{nav_bar_contacts}">    Контакти</a>
             </li>
             <li sec:authorize="hasRole('ROLE_ADMIN')"  class="nav-item">
-                <a class="nav-link" th:href="@{/all-users}">    Потребители</a>
+                <a class="nav-link" th:href="@{/all-users}" th:text="#{nav_bar_users}">    Потребители</a>
+            </li>
+            <li class="nav-item">
+                <form th:method="get">
+                    <label   for="lang" th:text="#{nav_bar_language}">Language</label>
+                    <select  class="d-inline"
+                            id="lang"
+                            name="lang"
+                            onchange="this.form.submit()">
+                        <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
+                        <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+                    </select>
+                </form>
+
             </li>
 
         </ul>

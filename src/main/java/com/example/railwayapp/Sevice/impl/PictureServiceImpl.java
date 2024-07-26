@@ -36,7 +36,7 @@ import java.util.Objects;
 
 @Service
 public class PictureServiceImpl implements PictureService {
-    private final PictureRepository pictureRepository;;
+    private final PictureRepository pictureRepository;
     private final StationService stationService;
     private final Cloudinary cloudinary;
     private final UserService userService;
@@ -80,6 +80,7 @@ public class PictureServiceImpl implements PictureService {
     @Override
     @Transactional
     public void deletePictureById(Long id) throws IOException {
+        //todo
         Picture picture = pictureRepository.findById(id).orElse(null);
         Station station = picture.getStation();
         station.getPictures().remove(picture);
