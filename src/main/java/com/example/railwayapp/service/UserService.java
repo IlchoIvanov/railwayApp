@@ -1,9 +1,8 @@
-package com.example.railwayapp.Sevice;
+package com.example.railwayapp.service;
 
 import com.example.railwayapp.Model.Dto.UserInfoDto;
 import com.example.railwayapp.Model.Dto.UserRegisterDto;
 import com.example.railwayapp.Model.Entity.User;
-import jakarta.validation.constraints.Size;
 
 import java.util.List;
 

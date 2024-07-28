@@ -1,16 +1,14 @@
 package com.example.railwayapp.Model.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "comments")
 public class Comment extends BaseEntity{
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(nullable = false)
+    @Lob
     private String content;
     @ManyToOne(optional = false)
     private User author;
@@ -23,13 +21,7 @@ public class Comment extends BaseEntity{
         this.time = LocalDateTime.now();
     }
 
-    public String getContent() {
-        return content;
-    }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
 
     public User getAuthor() {
         return author;
@@ -55,4 +47,11 @@ public class Comment extends BaseEntity{
         this.picture = picture;
     }
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 }

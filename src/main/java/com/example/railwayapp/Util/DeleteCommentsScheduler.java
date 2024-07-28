@@ -1,6 +1,6 @@
-package com.example.railwayapp.Sevice.impl;
+package com.example.railwayapp.Util;
 
-import com.example.railwayapp.Sevice.CommentService;
+import com.example.railwayapp.service.CommentService;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 

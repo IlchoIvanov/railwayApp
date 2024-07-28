@@ -2,7 +2,7 @@ package com.example.railwayapp.Web;
 
 import com.example.railwayapp.Model.Dto.StationViewDto;
 import com.example.railwayapp.Model.User.RailwayAppUserDetails;
-import com.example.railwayapp.Sevice.StationService;
+import com.example.railwayapp.service.StationService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

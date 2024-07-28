@@ -1,4 +1,4 @@
-package com.example.railwayapp.Sevice.impl;
+package com.example.railwayapp.service.impl;
 
 import com.example.railwayapp.Model.Dto.CommentAddDto;
 import com.example.railwayapp.Model.Entity.Comment;
@@ -7,10 +7,10 @@ import com.example.railwayapp.Model.Entity.User;
 import com.example.railwayapp.Repository.CommentRepository;
 import com.example.railwayapp.Repository.PictureRepository;
 import com.example.railwayapp.Repository.UserRepository;
-import com.example.railwayapp.Sevice.CommentService;
+import com.example.railwayapp.service.CommentService;
 
-import com.example.railwayapp.Sevice.PictureService;
-import com.example.railwayapp.Sevice.UserService;
+import com.example.railwayapp.service.PictureService;
+import com.example.railwayapp.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

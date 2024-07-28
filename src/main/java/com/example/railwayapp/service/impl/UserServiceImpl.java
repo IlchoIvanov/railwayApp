@@ -1,11 +1,11 @@
-package com.example.railwayapp.Sevice.impl;
+package com.example.railwayapp.service.impl;
 
 import com.example.railwayapp.Model.Dto.UserInfoDto;
 import com.example.railwayapp.Model.Dto.UserRegisterDto;
 import com.example.railwayapp.Model.Entity.Station;
 import com.example.railwayapp.Model.Entity.User;
 import com.example.railwayapp.Repository.UserRepository;
-import com.example.railwayapp.Sevice.UserService;
+import com.example.railwayapp.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

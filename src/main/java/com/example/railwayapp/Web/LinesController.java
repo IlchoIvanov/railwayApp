@@ -2,7 +2,7 @@ package com.example.railwayapp.Web;
 
 import com.example.railwayapp.Model.Dto.RailwayLineAddDto;
 import com.example.railwayapp.Model.Dto.RailwayLineViewDto;
-import com.example.railwayapp.Sevice.RailwayLineService;
+import com.example.railwayapp.service.RailwayLineService;
 import jakarta.validation.Valid;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;

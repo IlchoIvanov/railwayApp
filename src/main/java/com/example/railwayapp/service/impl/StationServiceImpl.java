@@ -1,4 +1,4 @@
-package com.example.railwayapp.Sevice.impl;
+package com.example.railwayapp.service.impl;
 
 import com.example.railwayapp.Model.Dto.PictureShortInfoDto;
 import com.example.railwayapp.Model.Dto.StationViewDto;
@@ -6,7 +6,7 @@ import com.example.railwayapp.Model.Entity.Enum.StationType;
 import com.example.railwayapp.Model.Entity.Picture;
 import com.example.railwayapp.Model.Entity.Station;
 import com.example.railwayapp.Repository.StationRepository;
-import com.example.railwayapp.Sevice.StationService;
+import com.example.railwayapp.service.StationService;
 import com.example.railwayapp.Model.Dto.StationShortDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

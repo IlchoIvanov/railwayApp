@@ -2,10 +2,9 @@ package com.example.railwayapp.Web;
 
 import com.example.railwayapp.Model.Dto.CommentAddDto;
 import com.example.railwayapp.Model.Dto.CommentViewDto;
-import com.example.railwayapp.Model.Dto.UserRegisterDto;
 import com.example.railwayapp.Model.User.RailwayAppUserDetails;
-import com.example.railwayapp.Sevice.CommentService;
-import com.example.railwayapp.Sevice.PictureService;
+import com.example.railwayapp.service.CommentService;
+import com.example.railwayapp.service.PictureService;
 import jakarta.validation.Valid;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

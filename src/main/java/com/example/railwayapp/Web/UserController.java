@@ -4,7 +4,7 @@ import com.example.railwayapp.Model.Dto.UserInfoDto;
 import com.example.railwayapp.Model.Dto.UserLoginDto;
 import com.example.railwayapp.Model.Dto.UserRegisterDto;
 import com.example.railwayapp.Model.User.RailwayAppUserDetails;
-import com.example.railwayapp.Sevice.UserService;
+import com.example.railwayapp.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

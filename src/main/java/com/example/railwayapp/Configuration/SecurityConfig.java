@@ -1,7 +1,7 @@
 package com.example.railwayapp.Configuration;
 
 import com.example.railwayapp.Repository.UserRepository;
-import com.example.railwayapp.Sevice.impl.RailwayAppUserDetailsService;
+import com.example.railwayapp.service.impl.RailwayAppUserDetailsService;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

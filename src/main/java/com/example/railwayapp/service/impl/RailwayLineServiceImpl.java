@@ -1,9 +1,9 @@
-package com.example.railwayapp.Sevice.impl;
+package com.example.railwayapp.service.impl;
 
 import com.example.railwayapp.Model.Dto.RailwayLineAddDto;
 import com.example.railwayapp.Model.Dto.RailwayLineViewDto;
-import com.example.railwayapp.Sevice.PictureService;
-import com.example.railwayapp.Sevice.RailwayLineService;
+import com.example.railwayapp.service.PictureService;
+import com.example.railwayapp.service.RailwayLineService;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;

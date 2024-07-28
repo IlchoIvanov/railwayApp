@@ -1,4 +1,4 @@
-package com.example.railwayapp.Sevice;
+package com.example.railwayapp.service;
 
 import com.example.railwayapp.Model.Dto.RailwayLineAddDto;
 import com.example.railwayapp.Model.Dto.RailwayLineViewDto;

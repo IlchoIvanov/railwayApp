@@ -1,6 +1,6 @@
 package com.example.railwayapp.Util.Validation;
 
-import com.example.railwayapp.Sevice.UserService;
+import com.example.railwayapp.service.UserService;
 
 import com.example.railwayapp.Util.Annotations.UniqueEmail;
 import jakarta.validation.ConstraintValidator;

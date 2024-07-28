@@ -1,4 +1,4 @@
-package com.example.railwayapp.Sevice.impl;
+package com.example.railwayapp.service.impl;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
@@ -13,15 +13,13 @@ import com.example.railwayapp.Model.User.RailwayAppUserDetails;
 import com.example.railwayapp.Repository.PictureRepository;
 import com.example.railwayapp.Repository.StationRepository;
 import com.example.railwayapp.Repository.UserRepository;
-import com.example.railwayapp.Sevice.PictureService;
-import com.example.railwayapp.Sevice.StationService;
-import com.example.railwayapp.Sevice.UserService;
+import com.example.railwayapp.service.PictureService;
+import com.example.railwayapp.service.StationService;
+import com.example.railwayapp.service.UserService;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestClient;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;

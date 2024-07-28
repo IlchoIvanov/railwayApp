@@ -1,0 +1,28 @@
+spring:
+  jpa:
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      mode: never
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+
+
+rail-lines:
+  api:
+    baseUrl: "http://localhost:8081"
+
+cloudinary:
+  cloud:
+    name: ${cloudinary.cloud.name}
+  api:
+    key: ${cloudinary.api.key}
+    secret: ${cloudinary.api.secret}

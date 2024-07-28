@@ -1,11 +1,10 @@
 package com.example.railwayapp.Web;
 
 import com.example.railwayapp.Model.User.RailwayAppUserDetails;
-import com.example.railwayapp.Sevice.PictureService;
+import com.example.railwayapp.service.PictureService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 

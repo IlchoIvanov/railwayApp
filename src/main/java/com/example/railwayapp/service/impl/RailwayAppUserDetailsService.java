@@ -1,4 +1,4 @@
-package com.example.railwayapp.Sevice.impl;
+package com.example.railwayapp.service.impl;
 
 import com.example.railwayapp.Model.Entity.Enum.UserRole;
 import com.example.railwayapp.Model.Entity.User;
@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.List;
-import java.util.Optional;
 
 public class RailwayAppUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
