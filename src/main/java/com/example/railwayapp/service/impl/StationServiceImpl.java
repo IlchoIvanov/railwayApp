@@ -1,13 +1,13 @@
 package com.example.railwayapp.service.impl;
 
-import com.example.railwayapp.Model.Dto.PictureShortInfoDto;
-import com.example.railwayapp.Model.Dto.StationViewDto;
-import com.example.railwayapp.Model.Entity.Enum.StationType;
-import com.example.railwayapp.Model.Entity.Picture;
-import com.example.railwayapp.Model.Entity.Station;
-import com.example.railwayapp.Repository.StationRepository;
+import com.example.railwayapp.model.dto.PictureShortInfoDto;
+import com.example.railwayapp.model.dto.StationViewDto;
+import com.example.railwayapp.model.entity.Enum.StationType;
+import com.example.railwayapp.model.entity.Picture;
+import com.example.railwayapp.model.entity.Station;
+import com.example.railwayapp.repository.StationRepository;
 import com.example.railwayapp.service.StationService;
-import com.example.railwayapp.Model.Dto.StationShortDto;
+import com.example.railwayapp.model.dto.StationShortDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.example.railwayapp.service;
 
-import com.example.railwayapp.Model.Dto.RailwayLineAddDto;
-import com.example.railwayapp.Model.Dto.RailwayLineViewDto;
+import com.example.railwayapp.model.dto.RailwayLineAddDto;
+import com.example.railwayapp.model.dto.RailwayLineViewDto;
 
 import java.util.List;
 

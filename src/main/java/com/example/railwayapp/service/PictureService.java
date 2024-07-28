@@ -1,9 +1,9 @@
 package com.example.railwayapp.service;
 
-import com.example.railwayapp.Model.Dto.CommentViewDto;
-import com.example.railwayapp.Model.Dto.PictureShortInfoDto;
-import com.example.railwayapp.Model.Entity.Picture;
-import com.example.railwayapp.Model.User.RailwayAppUserDetails;
+import com.example.railwayapp.model.dto.CommentViewDto;
+import com.example.railwayapp.model.dto.PictureShortInfoDto;
+import com.example.railwayapp.model.entity.Picture;
+import com.example.railwayapp.model.user.RailwayAppUserDetails;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.multipart.MultipartFile;
 

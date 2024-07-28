@@ -1,12 +1,12 @@
 package com.example.railwayapp.service.impl;
 
-import com.example.railwayapp.Model.Dto.CommentAddDto;
-import com.example.railwayapp.Model.Entity.Comment;
-import com.example.railwayapp.Model.Entity.Picture;
-import com.example.railwayapp.Model.Entity.User;
-import com.example.railwayapp.Repository.CommentRepository;
-import com.example.railwayapp.Repository.PictureRepository;
-import com.example.railwayapp.Repository.UserRepository;
+import com.example.railwayapp.model.dto.CommentAddDto;
+import com.example.railwayapp.model.entity.Comment;
+import com.example.railwayapp.model.entity.Picture;
+import com.example.railwayapp.model.entity.User;
+import com.example.railwayapp.repository.CommentRepository;
+import com.example.railwayapp.repository.PictureRepository;
+import com.example.railwayapp.repository.UserRepository;
 import com.example.railwayapp.service.CommentService;
 
 import com.example.railwayapp.service.PictureService;

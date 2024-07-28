@@ -1,10 +1,10 @@
 package com.example.railwayapp.service;
 
-import com.example.railwayapp.Model.Dto.UserInfoDto;
-import com.example.railwayapp.Model.Dto.UserRegisterDto;
-import com.example.railwayapp.Model.Entity.Station;
-import com.example.railwayapp.Model.Entity.User;
-import com.example.railwayapp.Repository.UserRepository;
+import com.example.railwayapp.model.dto.UserInfoDto;
+import com.example.railwayapp.model.dto.UserRegisterDto;
+import com.example.railwayapp.model.entity.Station;
+import com.example.railwayapp.model.entity.User;
+import com.example.railwayapp.repository.UserRepository;
 import com.example.railwayapp.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

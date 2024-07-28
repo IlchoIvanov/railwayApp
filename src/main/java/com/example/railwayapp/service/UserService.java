@@ -1,8 +1,8 @@
 package com.example.railwayapp.service;
 
-import com.example.railwayapp.Model.Dto.UserInfoDto;
-import com.example.railwayapp.Model.Dto.UserRegisterDto;
-import com.example.railwayapp.Model.Entity.User;
+import com.example.railwayapp.model.dto.UserInfoDto;
+import com.example.railwayapp.model.dto.UserRegisterDto;
+import com.example.railwayapp.model.entity.User;
 
 import java.util.List;
 

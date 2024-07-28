@@ -1,7 +1,7 @@
 package com.example.railwayapp.service.impl;
 
-import com.example.railwayapp.Model.Dto.RailwayLineAddDto;
-import com.example.railwayapp.Model.Dto.RailwayLineViewDto;
+import com.example.railwayapp.model.dto.RailwayLineAddDto;
+import com.example.railwayapp.model.dto.RailwayLineViewDto;
 import com.example.railwayapp.service.PictureService;
 import com.example.railwayapp.service.RailwayLineService;
 import org.springframework.core.ParameterizedTypeReference;

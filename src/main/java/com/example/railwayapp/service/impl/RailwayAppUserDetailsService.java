@@ -1,9 +1,9 @@
 package com.example.railwayapp.service.impl;
 
-import com.example.railwayapp.Model.Entity.Enum.UserRole;
-import com.example.railwayapp.Model.Entity.User;
-import com.example.railwayapp.Model.User.RailwayAppUserDetails;
-import com.example.railwayapp.Repository.UserRepository;
+import com.example.railwayapp.model.entity.Enum.UserRole;
+import com.example.railwayapp.model.entity.User;
+import com.example.railwayapp.model.user.RailwayAppUserDetails;
+import com.example.railwayapp.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
