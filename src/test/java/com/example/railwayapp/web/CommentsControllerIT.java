@@ -1,6 +1,5 @@
 package com.example.railwayapp.web;
 
-import com.example.railwayapp.model.dto.CommentAddDto;
 import com.example.railwayapp.model.dto.CommentViewDto;
 import com.example.railwayapp.model.entity.Picture;
 import com.example.railwayapp.service.CommentService;
@@ -12,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.security.core.parameters.P;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
