@@ -22,7 +22,6 @@ public class PictureController {
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public String addImage(@PathVariable("station_id") Long stationId,@AuthenticationPrincipal RailwayAppUserDetails userDetails, @RequestParam MultipartFile image) throws IOException {
         pictureService.uploadPicture(image,userDetails, stationId);
-        //todo: exception handling
         return "redirect:/stations/" + stationId;
     }
     @DeleteMapping("/delete/picture/{id}/{station-id}")

@@ -71,15 +71,14 @@ public class PictureServiceImpl implements PictureService {
 
     @Override
     public Picture getPicturebyId(Long id) {
-        return pictureRepository.findById(id).orElse(null);
-        //todo: throw if picture is null
+        return pictureRepository.findById(id).orElseThrow();
+
     }
 
     @Override
     @Transactional
     public void deletePictureById(Long id) throws IOException {
-        //todo
-        Picture picture = pictureRepository.findById(id).orElse(null);
+        Picture picture = pictureRepository.findById(id).orElseThrow();
         Station station = picture.getStation();
         station.getPictures().remove(picture);
         stationRepository.save(station);
@@ -98,7 +97,6 @@ public class PictureServiceImpl implements PictureService {
     @Override
     public String getPictureUrlById(Long id) {
         Picture picturebyId = this.getPicturebyId(id);
-        //todo: throw if picture is null
         return picturebyId.getPath();
     }
 
@@ -112,7 +110,6 @@ public class PictureServiceImpl implements PictureService {
         Station station = stationService.getStationById(stationId);
         if (station == null) {
             throw new IOException();
-            //TODO
         }
         picture.setStation(station);
         picture.setCloudinaryId((String) result.get("public_id"));
@@ -137,8 +134,7 @@ public class PictureServiceImpl implements PictureService {
 
     @Override
     public List<CommentViewDto> getPictureComments(Long pictureId) {
-        Picture picture = pictureRepository.findById(pictureId).orElse(null);
-        //todo: throw if picture is null
+        Picture picture = pictureRepository.findById(pictureId).orElseThrow();
         List<Comment> comments = picture.getComments();
         List<CommentViewDto> commentViewDtos = new ArrayList<>();
         for (Comment comment : comments) {

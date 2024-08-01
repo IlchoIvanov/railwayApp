@@ -55,7 +55,6 @@ public class StationServiceImpl implements StationService {
 
     @Override
     public StationViewDto getStationInfoById(long id) {
-        //TODO: exception
         Optional<Station> byId = stationrepository.findById(id);
         if (byId.isPresent()) {
             Station station = byId.get();
@@ -71,7 +70,7 @@ public class StationServiceImpl implements StationService {
             return stationViewDto;
 
         }else{
-            return null;
+            throw new RuntimeException();
         }
     }
 

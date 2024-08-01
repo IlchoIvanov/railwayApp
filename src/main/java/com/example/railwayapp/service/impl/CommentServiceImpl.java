@@ -50,8 +50,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public void deleteCommentById(Long id) {
-        Comment comment = commentRepository.findById(id).orElse(null);
-        // todo: throw if comment is null
+        Comment comment = commentRepository.findById(id).orElseThrow();
         User author =  comment.getAuthor();
         author.getUserComments().remove(comment);
         userRepository.save(comment.getAuthor());

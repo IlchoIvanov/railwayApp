@@ -16,6 +16,8 @@ public class Station extends BaseEntity {
     private StationType stationType;
     @Column(nullable = false, name = "tickets_sale")
     private boolean ticketsSale;
+    @Lob
+    @Column(length = 20000)
     private String description;
     @OneToMany(mappedBy = "station", fetch = FetchType.EAGER)
     private List<Picture> pictures;
